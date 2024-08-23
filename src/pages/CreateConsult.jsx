@@ -39,47 +39,46 @@ function CreateConsult() {
   const createConsultHandler = async (e) => {
     e.preventDefault();
     const idHandler = idKey();
-    // if (parseInt(otp) === otpGenerator) {
-
-    // } else {
-    //   setOtpValidasi(false);
-    // }
 
     try {
-      const konsulCreateData = {
-        id: idHandler,
-        nama,
-        no_hp,
-        jenis_kelamin,
-        keluhan,
-        alergi,
-        email,
-        alamat,
-        usia,
-        m_pembayaran,
-      };
+      if (parseInt(otp) === otpGenerator) {
+        const konsulCreateData = {
+          id: idHandler,
+          nama,
+          no_hp,
+          jenis_kelamin,
+          keluhan,
+          alergi,
+          email,
+          alamat,
+          usia,
+          m_pembayaran,
+        };
 
-      const response = await Axios.post(
-        "https://server-klinik-production.up.railway.app/konsul/create_consult",
-        konsulCreateData
-      );
+        const response = await Axios.post(
+          "https://server-klinik-production.up.railway.app/konsul/create_consult",
+          konsulCreateData
+        );
 
-      console.log({
-        id: idHandler,
-        nama,
-        no_hp,
-        jenis_kelamin,
-        keluhan,
-        alergi,
-        email,
-        alamat,
-        usia,
-        m_pembayaran,
-      });
+        console.log({
+          id: idHandler,
+          nama,
+          no_hp,
+          jenis_kelamin,
+          keluhan,
+          alergi,
+          email,
+          alamat,
+          usia,
+          m_pembayaran,
+        });
 
-      if (response.status === 201) {
-        await sendEmailCreateKonsul({ e, email, details: konsulCreateData });
-        navigate(`/konsul/details/${idHandler}`);
+        if (response.status === 201) {
+          await sendEmailCreateKonsul({ e, email, details: konsulCreateData });
+          navigate(`/konsul/details/${idHandler}`);
+        }
+      } else {
+        setOtpValidasi(false);
       }
     } catch (error) {
       console.log(error);

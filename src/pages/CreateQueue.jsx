@@ -69,15 +69,19 @@ function Queue() {
     }
 
     try {
-      const response = await Axios.post(
-        `https://server-klinik-production.up.railway.app/queue/create_queue`,
-        queueData
-      );
+      if (parseInt(otp) === otpGenerator) {
+        const response = await Axios.post(
+          `https://server-klinik-production.up.railway.app/queue/create_queue`,
+          queueData
+        );
 
-      if (response.status === 201) {
-        navigate(`/queue/details/${idHandler}`);
+        if (response.status === 201) {
+          navigate(`/queue/details/${idHandler}`);
+        } else {
+          console.log("Gagal membuat antrean:", response.data.error);
+        }
       } else {
-        console.log("Gagal membuat antrean:", response.data.error);
+        setOtpValidasi(false);
       }
     } catch (err) {
       console.log("Error in createAntrian: ", err);
