@@ -16,7 +16,7 @@ function DetailsQueue() {
     async function resDetailAntrian() {
       try {
         const response = await Axios.get(
-          `http://localhost:3000/queue/read_data/${id}`
+          `https://server-klinik-production.up.railway.app/queue/read_data/${id}`
         );
         setDetails(response.data);
         setLoading(false);

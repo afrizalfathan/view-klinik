@@ -13,6 +13,7 @@ import ReadKonsultasi from "./pages/ReadKonsultasi";
 import DetailsKonsul from "./pages/DetailsKonsul";
 import CheckKonsul from "./pages/CheckKonsul";
 import QueueDisplay from "./components/QueueDisplay";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -35,6 +36,14 @@ function App() {
             </ProtectedRoute>
           }
         >
+          <Route
+            path="dashboard"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="antrianControl"
             element={

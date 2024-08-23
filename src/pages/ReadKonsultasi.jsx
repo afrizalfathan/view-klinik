@@ -11,9 +11,12 @@ function ReadKonsultasi() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    Axios.get("http://localhost:3000/konsul/read_all_konsul", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    Axios.get(
+      "https://server-klinik-production.up.railway.app/konsul/read_all_konsul",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
       .then((resolve) => setData(resolve.data))
       .catch((error) => console.log(error));
   }, []);

@@ -10,10 +10,10 @@ const QueueDisplay = () => {
   );
 
   useEffect(() => {
-    const shift1Start = "06:30";
-    const shift1End = "08:30";
-    const shift2Start = "12:30";
-    const shift2End = "19:30";
+    const shift1Start = "06.30";
+    const shift1End = "08.30";
+    const shift2Start = "16:30";
+    const shift2End = "19.30";
 
     const currentTime = new Date().toLocaleTimeString("en-GB", {
       hour: "2-digit",
@@ -22,7 +22,9 @@ const QueueDisplay = () => {
 
     if (currentTime >= shift1Start && currentTime <= shift1End) {
       axios
-        .get(`http://localhost:3000/queue/shift/1/${currentDate}`)
+        .get(
+          `https://server-klinik-production.up.railway.app/queue/shift/1/${currentDate}`
+        )
         .then((response) => {
           setShift1Queue(response.data);
         })
@@ -31,7 +33,9 @@ const QueueDisplay = () => {
 
     if (currentTime >= shift2Start && currentTime <= shift2End) {
       axios
-        .get(`http://localhost:3000/queue/shift/2/${currentDate}`)
+        .get(
+          `https://server-klinik-production.up.railway.app/queue/shift/2/${currentDate}`
+        )
         .then((response) => {
           setShift2Queue(response.data);
         })
@@ -45,7 +49,6 @@ const QueueDisplay = () => {
 
   return (
     <Container className="my-5">
-      <button onClick={click}>Test</button>
       <h1 className="text-center mb-5">Antrian Hari Ini</h1>
       <Row className="justify-content-center">
         <Col md={4} className="mb-4">
@@ -55,10 +58,10 @@ const QueueDisplay = () => {
             </div>
             <div className="shift-label text-primary">Shift 1</div>
             <div className="queue-number text-success mt-3">
-              {shift1Queue.antrian ? (
-                <h4>{shift1Queue.antrian}</h4>
-              ) : (
+              {shift1Queue === null ? (
                 <h4>-</h4>
+              ) : (
+                <h4>{shift1Queue.antrian}</h4>
               )}
             </div>
             <div className="mt-3">Nomor Antrian Saat Ini</div>
@@ -74,10 +77,10 @@ const QueueDisplay = () => {
             </div>
             <div className="shift-label text-secondary">Shift 2</div>
             <div className="queue-number text-muted mt-3">
-              {shift2Queue.antrian ? (
-                <h4>{shift2Queue.antrian}</h4>
-              ) : (
+              {shift2Queue === null ? (
                 <h4>-</h4>
+              ) : (
+                <h4>{shift2Queue.antrian}</h4>
               )}
             </div>
             <div className="mt-3">Nomor Antrian Saat Ini</div>

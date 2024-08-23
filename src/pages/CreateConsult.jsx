@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import sendEmail from "../components/sendEmail";
 import sendEmailCreateKonsul from "../components/sendEmailCreateKonsul";
 import React from "react";
+import FindKonsul from "./FindKonsul";
 
 function CreateConsult() {
   const [nama, setNama] = useState("");
@@ -19,6 +20,7 @@ function CreateConsult() {
   const [otpGenerator, setOtpGenerator] = useState("");
   const [otpValidasi, setOtpValidasi] = useState(true);
   const [m_pembayaran, setM_pembayaran] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   function idKey() {
@@ -57,12 +59,10 @@ function CreateConsult() {
         m_pembayaran,
       };
 
-      await Axios.post(
-        "http://localhost:3000/konsul/create_consult",
+      const response = await Axios.post(
+        "https://server-klinik-production.up.railway.app/konsul/create_consult",
         konsulCreateData
       );
-
-      sendEmailCreateKonsul({ e, email, details: konsulCreateData });
 
       console.log({
         id: idHandler,
@@ -76,40 +76,47 @@ function CreateConsult() {
         usia,
         m_pembayaran,
       });
-      // navigate(`/konsul/details/${idHandler}`);
+
+      if (response.status === 201) {
+        await sendEmailCreateKonsul({ e, email, details: konsulCreateData });
+        navigate(`/konsul/details/${idHandler}`);
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <FormConsult
-      setAlergi={setAlergi}
-      alergi={alergi}
-      setKeluhan={setKeluhan}
-      keluhan={keluhan}
-      setJenis_kelamin={setJenis_kelamin}
-      jenis_kelamin={jenis_kelamin}
-      setNama={setNama}
-      nama={nama}
-      setNo_hp={setNo_hp}
-      no_hp={no_hp}
-      setOtp={setOtp}
-      otp={otp}
-      setAlamat={setAlamat}
-      alamat={alamat}
-      setEmail={setEmail}
-      createConsultHandler={createConsultHandler}
-      sendEmail={sendEmail}
-      setOtpGenerator={setOtpGenerator}
-      setM_pembayaran={setM_pembayaran}
-      m_pembayaran={m_pembayaran}
-      setUsia={setUsia}
-      email={email}
-      usia={usia}
-      setOtpValidasi={setOtpValidasi}
-      otpValidasi={otpValidasi}
-    />
+    <>
+      <FindKonsul />
+      <FormConsult
+        setAlergi={setAlergi}
+        alergi={alergi}
+        setKeluhan={setKeluhan}
+        keluhan={keluhan}
+        setJenis_kelamin={setJenis_kelamin}
+        jenis_kelamin={jenis_kelamin}
+        setNama={setNama}
+        nama={nama}
+        setNo_hp={setNo_hp}
+        no_hp={no_hp}
+        setOtp={setOtp}
+        otp={otp}
+        setAlamat={setAlamat}
+        alamat={alamat}
+        setEmail={setEmail}
+        createConsultHandler={createConsultHandler}
+        sendEmail={sendEmail}
+        setOtpGenerator={setOtpGenerator}
+        setM_pembayaran={setM_pembayaran}
+        m_pembayaran={m_pembayaran}
+        setUsia={setUsia}
+        email={email}
+        usia={usia}
+        setOtpValidasi={setOtpValidasi}
+        otpValidasi={otpValidasi}
+      />
+    </>
   );
 }
 

@@ -19,7 +19,7 @@ function DetailsKonsul() {
     async function getDetailsKonsul() {
       try {
         const response = await Axios.get(
-          `http://localhost:3000/konsul/konsul_details/${id}`,
+          `https://server-klinik-production.up.railway.app/konsul/konsul_details/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -40,7 +40,7 @@ function DetailsKonsul() {
         // Set image URL
         const imageURL =
           konsulData.length > 0
-            ? `http://localhost:3000/uploads/${konsulData[0].b_pembayaran}`
+            ? `https://server-klinik-production.up.railway.app/uploads/${konsulData[0].b_pembayaran}`
             : "";
         setUploadedImageUrl(imageURL);
       } catch (error) {
@@ -70,7 +70,7 @@ function DetailsKonsul() {
 
     try {
       const response = await Axios.put(
-        `http://localhost:3000/konsul/konsul_details/update/${id}`,
+        `https://server-klinik-production.up.railway.app/konsul/konsul_details/update/${id}`,
         konsultasiData,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -170,7 +170,7 @@ function DetailsKonsul() {
                   <Form.Group controlId="b_pembayaran" className="mb-3">
                     <Form.Label>Bukti Pembayaran :</Form.Label>
                     {uploadedImageUrl ===
-                    "http://localhost:3000/uploads/null" ? (
+                    "https://server-klinik-production.up.railway.app/uploads/null" ? (
                       <p>Bukti Pembayaran Belum Diupload</p>
                     ) : (
                       <img

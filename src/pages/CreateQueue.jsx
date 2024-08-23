@@ -70,7 +70,7 @@ function Queue() {
 
     try {
       const response = await Axios.post(
-        "http://localhost:3000/queue/create_queue",
+        `https://server-klinik-production.up.railway.app/queue/create_queue`,
         queueData
       );
 
