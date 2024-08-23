@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import sendEmailEditKonsul from "../components/sendEmailEditKonsul";
 import Axios from "axios";
+import React from "react";
 
 function DetailsKonsul() {
   const { id } = useParams();

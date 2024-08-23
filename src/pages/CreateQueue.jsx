@@ -9,7 +9,7 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import InputGroup from "react-bootstrap/InputGroup";
 import validator from "validator";
-
+import React from "react";
 import sendEmail from "../components/sendEmail";
 
 function Queue() {

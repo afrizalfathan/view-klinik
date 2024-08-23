@@ -1,4 +1,5 @@
 import Axios from "axios";
+import React from "react";
 
 async function sendEmail({ email, setOtpGenerator, e, subject }) {
   e.preventDefault();

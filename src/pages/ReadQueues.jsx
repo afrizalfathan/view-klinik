@@ -2,6 +2,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Axios from "axios";
 import { useState, useEffect } from "react";
+import React from "react";
 
 function Antrian() {
   const [data, setData] = useState([]);

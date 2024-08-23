@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 function ReadKonsultasi() {
   const [data, setData] = useState([]);

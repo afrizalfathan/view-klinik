@@ -4,6 +4,7 @@ import FormConsult from "../components/FormConsult";
 import { useNavigate } from "react-router-dom";
 import sendEmail from "../components/sendEmail";
 import sendEmailCreateKonsul from "../components/sendEmailCreateKonsul";
+import React from "react";
 
 function CreateConsult() {
   const [nama, setNama] = useState("");

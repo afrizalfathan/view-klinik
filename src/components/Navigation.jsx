@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import { FaHospitalUser } from "react-icons/fa";
 import { Outlet } from "react-router-dom";
+import React from "react";
 
 function Navigation() {
   return (
