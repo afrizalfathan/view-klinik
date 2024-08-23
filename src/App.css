@@ -1,0 +1,143 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fefae0;
+}
+
+.background_jumbotron {
+  background-image: url("../assets/jumbotron.jpg");
+  background-position: center center;
+  filter: brightness(80%);
+  background-size: cover;
+  height: 550px;
+}
+
+.jumbotron_about {
+  background-color: #6ad4dd;
+}
+
+.jumbotron-about {
+  padding: 50px 0;
+}
+
+.layanan-kami-container {
+  background-color: #e7e8d8;
+  border-radius: 20px;
+}
+
+.about-left img {
+  border-radius: 10px;
+}
+
+.about-right {
+  border-radius: 20px;
+}
+
+.service-section {
+  margin-bottom: 20px;
+}
+
+.service-section h4 {
+  color: #af8f6f;
+}
+
+.hr-line {
+  width: 40%;
+  margin: auto;
+  border: 2px solid black !important;
+  color: black;
+}
+
+.service-section p {
+  font-size: 1.1rem;
+}
+
+.queue-details-page {
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.details-body {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.uploaded-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.queue-page {
+  padding: 20px;
+}
+
+.queue-page {
+  padding: 20px;
+}
+
+.form-antrian,
+.aside-antrian {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-antrian {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .form-antrian .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .form-antrian .col-md-6 {
+    width: 50%;
+  }
+
+  .aside-antrian {
+    margin-top: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .details-body {
+    padding: 15px;
+  }
+
+  .details-body h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-left,
+  .about-right {
+    text-align: center;
+  }
+
+  .about-left img {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .details-body {
+    padding: 10px;
+  }
+
+  .details-body h3 {
+    font-size: 1.2rem;
+  }
+}
