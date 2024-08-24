@@ -88,15 +88,12 @@ async function sendEmailCreateKonsul({ e, email, details }) {
   `;
 
   try {
-    await Axios.post(
-      "https://server-klinik-production.up.railway.app/email_routes/email_send",
-      {
-        from: "refleurflower@gmail.com",
-        to: email,
-        subject: "Detail Konsultasi Anda",
-        message: message,
-      }
-    );
+    await Axios.post("http://localhost:3000/email_routes/email_send", {
+      from: "refleurflower@gmail.com",
+      to: email,
+      subject: "Detail Konsultasi Anda",
+      message: message,
+    });
     console.log(message);
     console.log(details);
     alert("Perubahan sudah terkirim ke email penerima");

@@ -14,6 +14,7 @@ import DetailsKonsul from "./pages/DetailsKonsul";
 import CheckKonsul from "./pages/CheckKonsul";
 import QueueDisplay from "./components/QueueDisplay";
 import AdminDashboard from "./pages/AdminDashboard";
+import AddQueueForm from "./pages/AddQueueForm";
 
 function App() {
   return (
@@ -49,6 +50,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ReadQueues />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="antrianControl/create_queue"
+            element={
+              <ProtectedRoute>
+                <AddQueueForm />
               </ProtectedRoute>
             }
           />

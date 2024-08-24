@@ -137,6 +137,45 @@ body {
   font-size: 20px;
 }
 
+.table-custom {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-custom th {
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+}
+
+.table-custom td {
+  text-align: center;
+}
+
+.table-custom tr:hover {
+  background-color: #f2f2f2;
+}
+
+.container {
+  max-width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+h3 {
+  color: #007bff;
+}
+
+button {
+  margin-right: 5px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
 @media (min-width: 768px) {
   .form-antrian .row {
     display: flex;

@@ -126,13 +126,6 @@ function FormConsult({
                 {otpValidasi === false && (
                   <Alert variant="danger">Otp Salah</Alert>
                 )}
-                <Button
-                  variant="primary"
-                  className="mt-4"
-                  onClick={handleShowModal}
-                >
-                  Submit
-                </Button>
               </div>
             </Col>
 
@@ -223,6 +216,7 @@ function FormConsult({
               </Form.Group>
             </Col>
           </Row>
+          <Button onClick={() => handleShowModal()}>Submit</Button>
         </Form>
       </Container>
 

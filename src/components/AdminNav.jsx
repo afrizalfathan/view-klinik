@@ -29,60 +29,80 @@ function AdminNav() {
   };
 
   return (
-    <>
-      <div className="d-flex">
-        <div>
-          <Button
-            variant="primary"
-            className="d-lg-none "
-            onClick={toggleSidebar}
-            style={{
-              position: "fixed",
-              top: "10px",
-              left: "10px",
-              zIndex: "1000",
-            }}
-          >
-            <i className="bi bi-list"></i>
-          </Button>
-          <div
-            className={`d-flex flex-column vh-100 p-3 bg-dark text-white ${
-              showSidebar ? "d-block" : "d-none"
-            } d-lg-block`}
-            style={{ width: "200px", position: "sticky", top: 0 }}
-          >
-            <Button
-              variant="secondary"
-              className="d-lg-none mb-4"
-              onClick={toggleSidebar}
-            >
-              X
-            </Button>
-            <div className="mb-4">
-              <h2>Klinik</h2>
-            </div>
-            <Nav className="flex-column">
-              <Nav.Link href="/admin">Home</Nav.Link>
-              {role === "admin" && (
-                <Nav.Link href="/admin/antrianControl">Antrian</Nav.Link>
-              )}
-
-              {role === "doctor" && (
-                <Nav.Link href="/admin/konsultasi">Konsultasi</Nav.Link>
-              )}
-              <Nav.Link>
-                <Button variant="danger" onClick={() => handleLogout()}>
-                  Log out
-                </Button>
-              </Nav.Link>
-            </Nav>
-          </div>
+    <div
+      style={{
+        display: "flex",
+        height: "100vh",
+        overflow: "hidden", // Ensures that the content fits within the viewport
+      }}
+    >
+      {/* Sidebar */}
+      <div
+        className={`d-flex flex-column p-3 bg-dark text-white ${
+          showSidebar ? "d-block" : "d-none"
+        } d-lg-flex`}
+        style={{
+          width: "20%",
+          minWidth: "200px", // To maintain a minimum width for the sidebar
+          position: "fixed",
+          top: 0,
+          left: 0,
+          height: "100%",
+          zIndex: "1000", // Ensure the sidebar is above other content
+        }}
+      >
+        <Button
+          variant="primary"
+          className="d-lg-none"
+          onClick={toggleSidebar}
+          style={{
+            position: "absolute",
+            top: "10px",
+            left: "10px",
+            zIndex: "1001",
+          }}
+        >
+          <i className="bi bi-list"></i>
+        </Button>
+        <Button
+          variant="secondary"
+          className="d-lg-none mb-4"
+          onClick={toggleSidebar}
+        >
+          X
+        </Button>
+        <div className="mb-4">
+          <h2>Klinik</h2>
         </div>
-        <main className="p-3">
-          <Outlet />
-        </main>
+        <Nav className="flex-column">
+          <Nav.Link href="/admin">Home</Nav.Link>
+          {role === "admin" && (
+            <Nav.Link href="/admin/antrianControl">Antrian</Nav.Link>
+          )}
+          {role === "doctor" && (
+            <Nav.Link href="/admin/konsultasi">Konsultasi</Nav.Link>
+          )}
+          <Nav.Link>
+            <Button variant="danger" onClick={() => handleLogout()}>
+              Log out
+            </Button>
+          </Nav.Link>
+        </Nav>
       </div>
-    </>
+
+      {/* Main content */}
+      <main
+        className="ps-3"
+        style={{
+          marginLeft: "20%", // Adjusts the main content to start after the sidebar
+          width: "80%",
+          overflowY: "auto", // Allows scrolling for main content
+          padding: "1rem", // Adds some padding for the content area
+        }}
+      >
+        <Outlet />
+      </main>
+    </div>
   );
 }
 

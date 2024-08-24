@@ -21,18 +21,16 @@ function CheckKonsul() {
     async function resDataKonsul() {
       try {
         const response = await Axios.get(
-          `https://server-klinik-production.up.railway.app/konsul/read_data/${id}`
+          `http://localhost:3000/konsul/read_data/${id}`
         );
         const data = response.data;
         setDetails(data);
 
         setImageUploaded(
-          `https://server-klinik-production.up.railway.app/uploads/${response.data.filename}` ||
-            false
+          `http://localhost:3000/uploads/${response.data.filename}` || false
         );
         setUploadedImageUrl(
-          `https://server-klinik-production.up.railway.app/uploads/${data[0].b_pembayaran}` ||
-            ""
+          `http://localhost:3000/uploads/${data[0].b_pembayaran}` || ""
         );
         setLoading(false);
       } catch (error) {
@@ -51,7 +49,7 @@ function CheckKonsul() {
 
     try {
       const response = await Axios.post(
-        `https://server-klinik-production.up.railway.app/konsul/upload_payment_proof/${id}`,
+        `http://localhost:3000/konsul/upload_payment_proof/${id}`,
         formData,
         {
           headers: {
@@ -61,7 +59,7 @@ function CheckKonsul() {
       );
       setImageUploaded(true);
       setUploadedImageUrl(
-        `https://server-klinik-production.up.railway.app/uploads/${response.data.filename}`
+        `http://localhost:3000/uploads/${response.data.filename}`
       );
       alert("Bukti pembayaran berhasil diupload");
     } catch (error) {

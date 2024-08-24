@@ -71,7 +71,7 @@ function Queue() {
     try {
       if (parseInt(otp) === otpGenerator) {
         const response = await Axios.post(
-          `https://server-klinik-production.up.railway.app/queue/create_queue`,
+          `http://localhost:3000/queue/create_queue`,
           queueData
         );
 
@@ -237,8 +237,8 @@ function Queue() {
                       <option value="" disabled>
                         Pilih Shift
                       </option>
-                      <option value="Shift 1 : 06.30 - 8.30">
-                        Shift 1 : 06.30 - 8.30
+                      <option value="Shift 1 : 06.30 - 08.30">
+                        Shift 1 : 06.30 - 08.30
                       </option>
                       <option value="Shift 2 : 16.30 - 19.30">
                         Shift 2 : 16.30 - 19.30

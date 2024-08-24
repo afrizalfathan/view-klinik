@@ -56,7 +56,7 @@ function CreateConsult() {
         };
 
         const response = await Axios.post(
-          "https://server-klinik-production.up.railway.app/konsul/create_consult",
+          "http://localhost:3000/konsul/create_consult",
           konsulCreateData
         );
 
