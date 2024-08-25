@@ -86,7 +86,7 @@ function DetailsKonsul() {
           email: emailPenerima,
           details: konsultasiData,
         });
-        navigate("/admin/adminKonsul");
+        navigate("/admin/konsultasi");
       } else {
         alert("Email penerima tidak ditemukan");
       }
