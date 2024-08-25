@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import sendEmailEditKonsul from "../components/sendEmailEditKonsul";
 import Axios from "axios";
@@ -14,7 +14,7 @@ function DetailsKonsul() {
   const [newObatList, setNewObatList] = useState([]);
   const [status, setStatus] = useState("Proses");
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
-
+  const navigate = useNavigate();
   useEffect(() => {
     async function getDetailsKonsul() {
       try {
@@ -86,6 +86,7 @@ function DetailsKonsul() {
           email: emailPenerima,
           details: konsultasiData,
         });
+        navigate("/admin/adminKonsul");
       } else {
         alert("Email penerima tidak ditemukan");
       }
@@ -200,6 +201,15 @@ function DetailsKonsul() {
                     <Form.Control
                       as="textarea"
                       value={items.keluhan}
+                      readOnly
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="email" className="mb-3">
+                    <Form.Label>Email :</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={items.Pasien.email}
                       readOnly
                     />
                   </Form.Group>

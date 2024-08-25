@@ -39,7 +39,7 @@ function Login() {
         setErrorMessage("Login failed: No access token returned");
       }
     } catch (error) {
-      console.error("Error during login:", error.message);
+      console.error("Username atau Password Salah");
       setErrorMessage("Login failed: " + error.message);
     }
   }
