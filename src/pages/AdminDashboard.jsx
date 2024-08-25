@@ -12,13 +12,13 @@ const AdminDashboard = () => {
     const fetchQueueData = async () => {
       try {
         const totalResponse = await axios.get(
-          "http://localhost:3000/queue/total_queues_today"
+          "https://server-klinik-production.up.railway.app/queue/total_queues_today"
         );
         const shift1Response = await axios.get(
-          "http://localhost:3000/queue/shift1_queues_today"
+          "https://server-klinik-production.up.railway.app/queue/shift1_queues_today"
         );
         const shift2Response = await axios.get(
-          "http://localhost:3000/queue/shift2_queues_today"
+          "https://server-klinik-production.up.railway.app/queue/shift2_queues_today"
         );
 
         setTotalQueues(totalResponse.data);

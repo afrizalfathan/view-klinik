@@ -86,7 +86,9 @@ function About() {
           <Row className="p-5 align-items-center">
             <Col md={6} className="about-left">
               <div className="service-section">
-                <h4></h4>
+                <h4>Hubungi Kami : xxxxxxxx </h4>
+                <h4>Email : xxxxxxx </h4>
+                <h4>Alamat :xxxxxxx </h4>
               </div>
             </Col>
             <Col md={6} className="about-right p-3">

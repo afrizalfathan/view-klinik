@@ -14,7 +14,7 @@ function Navigation() {
           <Navbar.Brand>
             <h3 className="pt-2">
               <FaHospitalUser className="me-1" />
-              Klinik
+              Klinik dr. Maemunah
             </h3>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

@@ -15,6 +15,7 @@ import CheckKonsul from "./pages/CheckKonsul";
 import QueueDisplay from "./components/QueueDisplay";
 import AdminDashboard from "./pages/AdminDashboard";
 import AddQueueForm from "./pages/AddQueueForm";
+import Logout from "./pages/Logout";
 
 function App() {
   return (
@@ -42,6 +43,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="logout"
+            element={
+              <ProtectedRoute>
+                <Logout />
               </ProtectedRoute>
             }
           />

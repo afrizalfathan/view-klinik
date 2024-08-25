@@ -15,9 +15,12 @@ function ReadKonsultasi() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    Axios.get("http://localhost:3000/konsul/read_all_konsul", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    Axios.get(
+      "https://server-klinik-production.up.railway.app/konsul/read_all_konsul",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
       .then((response) => setData(response.data))
       .catch((error) => console.log(error));
   }, [token]);

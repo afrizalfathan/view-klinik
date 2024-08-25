@@ -72,9 +72,13 @@ function AddQueueForm() {
     };
 
     try {
-      await Axios.post("http://localhost:3000/queue/create_queue", queueData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await Axios.post(
+        "https://server-klinik-production.up.railway.app/queue/create_queue",
+        queueData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       navigate("/admin/antrianControl");
       setShowModal(false);
     } catch (error) {

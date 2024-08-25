@@ -19,11 +19,6 @@ function AdminNav() {
     }
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
-
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
@@ -72,10 +67,9 @@ function AdminNav() {
           X
         </Button>
         <div className="mb-4">
-          <h2>Klinik</h2>
+          <h2>Klinik dr. Maemunah</h2>
         </div>
         <Nav className="flex-column">
-          <Nav.Link href="/admin">Home</Nav.Link>
           {role === "admin" && (
             <Nav.Link href="/admin/antrianControl">Antrian</Nav.Link>
           )}
@@ -83,7 +77,7 @@ function AdminNav() {
             <Nav.Link href="/admin/konsultasi">Konsultasi</Nav.Link>
           )}
           <Nav.Link>
-            <Button variant="danger" onClick={() => handleLogout()}>
+            <Button variant="danger" onClick={() => navigate("/admin/logout")}>
               Log out
             </Button>
           </Nav.Link>

@@ -22,7 +22,9 @@ const QueueDisplay = () => {
 
     if (currentTime >= shift1Start && currentTime <= shift1End) {
       axios
-        .get(`http://localhost:3000/queue/shift/1/${currentDate}`)
+        .get(
+          `https://server-klinik-production.up.railway.app/queue/shift/1/${currentDate}`
+        )
         .then((response) => {
           setShift1Queue(response.data);
         })
@@ -31,7 +33,9 @@ const QueueDisplay = () => {
 
     if (currentTime >= shift2Start && currentTime <= shift2End) {
       axios
-        .get(`http://localhost:3000/queue/shift/2/${currentDate}`)
+        .get(
+          `https://server-klinik-production.up.railway.app/queue/shift/2/${currentDate}`
+        )
         .then((response) => {
           setShift2Queue(response.data);
         })

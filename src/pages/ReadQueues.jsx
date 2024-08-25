@@ -18,9 +18,12 @@ function Antrian() {
   }, [selectedDate]);
 
   const fetchData = () => {
-    Axios.get(`http://localhost:3000/queue/read_data`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    Axios.get(
+      `https://server-klinik-production.up.railway.app/queue/read_data`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
       .then((resolve) => setData(resolve.data))
       .catch((error) => console.log(error));
   };
@@ -36,7 +39,7 @@ function Antrian() {
 
   const handleUpdateStatus = async (id, status) => {
     await Axios.put(
-      `http://localhost:3000/queue/update_status/${id}`,
+      `https://server-klinik-production.up.railway.app/queue/update_status/${id}`,
       { status },
       {
         headers: { Authorization: `Bearer ${token}` },
@@ -47,11 +50,14 @@ function Antrian() {
 
   const handleDeleteAntrian = async (id) => {
     try {
-      await Axios.delete(`http://localhost:3000/queue/antrian_del/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await Axios.delete(
+        `https://server-klinik-production.up.railway.app/queue/antrian_del/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       fetchData();
     } catch (error) {
       console.log(error);

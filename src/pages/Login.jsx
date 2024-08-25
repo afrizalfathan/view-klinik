@@ -15,7 +15,7 @@ function Login() {
   async function loginHandler() {
     try {
       const response = await Axios.post(
-        "http://localhost:3000/user/login_handler",
+        "https://server-klinik-production.up.railway.app/user/login_handler",
         {
           username,
           password,
@@ -25,7 +25,16 @@ function Login() {
 
       if (response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
-        navigate("/admin");
+        const userRole = response.data.user.role;
+
+        // Navigasi berdasarkan role pengguna
+        if (userRole === "admin") {
+          navigate("/admin/antrianControl");
+        } else if (userRole === "doctor") {
+          navigate("/admin/konsultasi");
+        } else {
+          setErrorMessage("Role tidak dikenali");
+        }
       } else {
         setErrorMessage("Login failed: No access token returned");
       }

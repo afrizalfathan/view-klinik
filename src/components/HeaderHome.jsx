@@ -9,7 +9,7 @@ function HeaderHome() {
           <h1 className="mt-5">
             Selamat Datang di
             <br />
-            <span>Klinik Sehat Bersama!</span>
+            <span>Klinik dr. Maemunah!</span>
           </h1>
           <p className="fs-5 mt-3">
             Kami berkomitmen untuk menyediakan pelayanan kesehatan terbaik

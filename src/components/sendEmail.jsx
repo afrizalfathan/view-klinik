@@ -7,12 +7,15 @@ async function sendEmail({ email, setOtpGenerator, e, subject }) {
   setOtpGenerator(otpRandom); // Memperbarui state dengan OTP acak yang baru
 
   try {
-    await Axios.post("http://localhost:3000/email_routes/email_send", {
-      from: "refleurflower@gmail.com",
-      to: email,
-      subject,
-      message: `Hai, kode otp kamu ${otpRandom}`, // Mengirim otpRandom dalam email
-    });
+    await Axios.post(
+      "https://server-klinik-production.up.railway.app/email_routes/email_send",
+      {
+        from: "refleurflower@gmail.com",
+        to: email,
+        subject,
+        message: `Hai, kode otp kamu ${otpRandom}`, // Mengirim otpRandom dalam email
+      }
+    );
     alert("Kode OTP sudah dikirim, silahkan cek email anda!");
   } catch (error) {
     console.log(error);
