@@ -303,10 +303,14 @@ function Queue() {
           <div className="aside-antrian">
             <h3>Cek Antrian Anda</h3>
             <InputGroup className="mb-3">
+              <Form.Group>
+              <Form.Label>Masukan ID antrian : </Form.Label>
               <Form.Control
                 placeholder="Masukan ID antrian"
                 onChange={(e) => setSearchAntrian(e.target.value)}
               />
+              </Form.Group>
+              
               <Button variant="warning" onClick={handleSearchAntrian}>
                 Cek Antrian
               </Button>
