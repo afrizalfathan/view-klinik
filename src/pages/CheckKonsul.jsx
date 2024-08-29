@@ -75,7 +75,7 @@ function CheckKonsul() {
   }
 
   if (error) {
-    return <Container>Error: {error.message}</Container>;
+    return <Container>Konsultasi tidak ditemukan!</Container>;
   }
 
   return (
