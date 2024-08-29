@@ -18,6 +18,7 @@ function Queue() {
   const [email, setEmail] = useState("");
   const [jenis_kelamin, setJenis_kelamin] = useState("");
   const [searchAntrian, setSearchAntrian] = useState("");
+  const [noDataFound, setNoDataFound] = useState(false);
   const [tanggal, setTanggal] = useState("");
   const [shift, setShift] = useState("");
   const [otpGenerator, setOtpGenerator] = useState("");
@@ -87,6 +88,24 @@ function Queue() {
       console.log("Error in createAntrian: ", err);
     }
   }
+
+  async function handleSearchAntrian() {
+    try {
+      const response = await Axios.get(
+        `https://server-klinik-production.up.railway.app/read_data/${searchAntrian}`
+      );
+
+      if (response.data.length > 0) {
+        navigate(`/queue/details/${searchAntrian}`);
+      } else {
+        setNoDataFound(true);  // Tampilkan alert jika data tidak ditemukan
+      }
+    } catch (error) {
+      console.error("Error fetching queue data:", error);
+      setNoDataFound(true);  // Tampilkan alert jika ada error
+    }
+  }
+
 
   function idKey() {
     const date = new Date();
@@ -272,6 +291,14 @@ function Queue() {
             </Form>
           </div>
         </Col>
+       <Col>
+          <h3 className="text-center mt-5">
+            Selamat Datang,
+            <br /> Silahkan Daftar Antrian
+          </h3>
+        </Col>
+      </Row>
+      <Row className="mt-3">
         <Col>
           <div className="aside-antrian">
             <h3>Cek Antrian Anda</h3>
@@ -280,13 +307,13 @@ function Queue() {
                 placeholder="Masukan ID antrian"
                 onChange={(e) => setSearchAntrian(e.target.value)}
               />
-              <Button
-                variant="warning"
-                onClick={() => navigate(`/queue/details/${searchAntrian}`)}
-              >
+              <Button variant="warning" onClick={handleSearchAntrian}>
                 Cek Antrian
               </Button>
             </InputGroup>
+            {noDataFound && (
+              <Alert variant="danger">Halaman tidak ditemukan</Alert>
+            )}
           </div>
         </Col>
       </Row>
