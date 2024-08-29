@@ -98,14 +98,13 @@ function Queue() {
       if (response.data.length > 0) {
         navigate(`/queue/details/${searchAntrian}`);
       } else {
-        setNoDataFound(true);  // Tampilkan alert jika data tidak ditemukan
+        setNoDataFound(true); // Tampilkan alert jika data tidak ditemukan
       }
     } catch (error) {
       console.error("Error fetching queue data:", error);
-      setNoDataFound(true);  // Tampilkan alert jika ada error
+      setNoDataFound(true); // Tampilkan alert jika ada error
     }
   }
-
 
   function idKey() {
     const date = new Date();
@@ -118,6 +117,23 @@ function Queue() {
 
     const result = `01_${day}_${month}_${year}_${randomNumber}`;
     return result;
+  }
+
+  async function handleSearchAntrian() {
+    try {
+      const response = await Axios.get(
+        `https://server-klinik-production.up.railway.app/read_data/${searchAntrian}`
+      );
+
+      if (response.data.length > 0) {
+        navigate(`/queue/details/${searchAntrian}`);
+      } else {
+        setNoDataFound(true); // Tampilkan alert jika data tidak ditemukan
+      }
+    } catch (error) {
+      console.error("Error fetching queue data:", error);
+      setNoDataFound(true); // Tampilkan alert jika ada error
+    }
   }
 
   return (
@@ -291,7 +307,7 @@ function Queue() {
             </Form>
           </div>
         </Col>
-       <Col>
+        <Col>
           <h3 className="text-center mt-5">
             Selamat Datang,
             <br /> Silahkan Daftar Antrian
@@ -303,15 +319,15 @@ function Queue() {
           <div className="aside-antrian">
             <h3>Cek Antrian Anda</h3>
             <InputGroup className="mb-3">
-              <Form.Group>
               <Form.Label>Masukan ID antrian : </Form.Label>
               <Form.Control
                 placeholder="Masukan ID antrian"
                 onChange={(e) => setSearchAntrian(e.target.value)}
               />
-              </Form.Group>
-              
-              <Button variant="warning" onClick={handleSearchAntrian}>
+              <Button
+                variant="warning"
+                onClick={() => navigate(`/queue/details/${searchAntrian}`)}
+              >
                 Cek Antrian
               </Button>
             </InputGroup>
