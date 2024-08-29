@@ -34,7 +34,7 @@ function DetailsQueue() {
   }
 
   if (error || !details || details.length === 0 || !details[0].antrian_id) {
-    return <Container>Antrian tidak ditemukan!</Container>;
+    return <Container>Antrian tidak ditemukan!!</Container>;
   }
 
   return (
