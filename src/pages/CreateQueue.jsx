@@ -308,17 +308,8 @@ function Queue() {
           </div>
         </Col>
         <Col>
-          <h3 className="text-center mt-5">
-            Selamat Datang,
-            <br /> Silahkan Daftar Antrian
-          </h3>
-        </Col>
-      </Row>
-      <Row className="mt-3">
-        <Col>
           <div className="aside-antrian">
-            <h3>Cek Antrian Anda</h3>
-            <InputGroup className="mb-3">
+            <Form.Group className="mb-3">
               <Form.Label>Masukan ID antrian : </Form.Label>
               <Form.Control
                 placeholder="Masukan ID antrian"
@@ -330,11 +321,11 @@ function Queue() {
               >
                 Cek Antrian
               </Button>
-            </InputGroup>
-            {noDataFound && (
-              <Alert variant="danger">Halaman tidak ditemukan</Alert>
-            )}
+            </Form.Group>
           </div>
+          {noDataFound && (
+            <Alert variant="danger">Halaman tidak ditemukan</Alert>
+          )}
         </Col>
       </Row>
     </Container>
