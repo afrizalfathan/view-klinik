@@ -97,7 +97,9 @@ function Queue() {
 
       if (response.data.length > 0) {
         navigate(`/queue/details/${searchAntrian}`);
-      } else {
+      } 
+      
+      if (response.data.length <= 0) {
         setNoDataFound(true); // Tampilkan alert jika data tidak ditemukan
       }
     } catch (error) {
