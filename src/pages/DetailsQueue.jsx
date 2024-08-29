@@ -33,8 +33,8 @@ function DetailsQueue() {
     return <Container>Loading...</Container>;
   }
 
-  if (error) {
-    return <Container>Konsultasi tidak ditemukan!</Container>;
+  if (error || !details || details.length === 0 || !details[0].antrian_id) {
+    return <Container>Antrian tidak ditemukan!</Container>;
   }
 
   return (
@@ -52,7 +52,7 @@ function DetailsQueue() {
               }}
             >
               <h3 className="mb-2">Kode Antrian : {element.antrian_id}</h3>
-              <h3 className="mb-2">Nomor Antrian anda</h3>
+              <h3 className="mb-2">Nomor Antrian Anda</h3>
               <h3 className="my-2">{element.antrian}</h3>
               <p className="text-center">
                 <b>{`(Pastikan screenshot halaman ini!)`}</b>
