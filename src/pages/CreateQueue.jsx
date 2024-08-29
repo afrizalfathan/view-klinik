@@ -122,20 +122,32 @@ function Queue() {
   }
 
   async function handleSearchAntrian() {
-    try {
-      const response = await Axios.get(
-        `https://server-klinik-production.up.railway.app/read_data/${searchAntrian}`
-      );
+  try {
+    const response = await Axios.get(
+      `https://server-klinik-production.up.railway.app/read_data/${searchAntrian}`
+    );
 
-      if (response.data.length > 0) {
-        navigate(`/queue/details/${searchAntrian}`);
-      } else {
-        setNoDataFound(true); // Tampilkan alert jika data tidak ditemukan
-      }
-    } catch (error) {
-      console.error("Error fetching queue data:", error);
+    if (response.data.length > 0) {
+      navigate(`/queue/details/${searchAntrian}`);
+    } else {
+      setNoDataFound(true); // Tampilkan alert jika data tidak ditemukan
+    }
+  } catch (error) {
+    console.error("Error fetching queue data:", error);
+    
+    // Cek apakah kesalahan adalah 404 (data tidak ditemukan)
+    if (error.response && error.response.status === 404) {
+      setNoDataFound(true); // Ganti dengan path yang sesuai
+    } else {
       setNoDataFound(true); // Tampilkan alert jika ada error
     }
+  }
+}
+
+  if(noDataFound) {
+    <Container>
+       <h1>Halaman Tidak di Temukan!</h1>
+    </Container>
   }
 
   return (
